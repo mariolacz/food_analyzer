@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from charts import plot_calories_chart, plot_sugar_chart, plot_nutrient_comparison, plot_calories_per_100g
+from charts import plot_calories_chart, plot_sugar_chart, plot_nutrient_comparison, plot_calories_per_100g, plot_calories_vs_sugar
 
 st.title("Food analyzer")
 
@@ -38,6 +38,7 @@ st.dataframe(final_filtered_df[columns_to_show])
 
 # Plot charts if data exists
 if not final_filtered_df.empty:
+    st.subheader("Callories Chart")
     plot_calories_chart(final_filtered_df)
     st.subheader("Sugar Chart")
     plot_sugar_chart(final_filtered_df)
@@ -45,5 +46,8 @@ if not final_filtered_df.empty:
     plot_nutrient_comparison(final_filtered_df)
     st.subheader("Calories per 100g")
     plot_calories_per_100g(final_filtered_df)
+    st.subheader("Calories vs Sugar")
+    plot_calories_vs_sugar(final_filtered_df)
+
 else:
     st.warning("No data available for the selected options.")

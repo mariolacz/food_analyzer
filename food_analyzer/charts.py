@@ -33,3 +33,10 @@ def plot_nutrient_comparison(df):
 def plot_calories_per_100g(df):
     fig = px.bar(df, x='FlavorVariant', y='MQCalories100gm-kcl', color='FlavorVariant', title="Calories per 100g")
     st.plotly_chart(fig)
+
+def plot_calories_vs_sugar(df):
+    fig = px.scatter(df, x='Calories-kcl', y='Sugar-g',
+                     size='Protein-g', color='FlavorVariant',
+                     hover_name='FlavorVariant',
+                     title="Calories vs Sugar (bubble size = Protein-g)")
+    st.plotly_chart(fig)
